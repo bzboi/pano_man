@@ -5,6 +5,8 @@
 # [![](./assets/gorkans2.jpeg)](./assets/gorkans2.jpeg)
 # [![](./assets/lizwiz1.jpeg)](./assets/lizwiz1.jpeg) 
 # [![](./assets/lizwiz2.jpeg)](./assets/lizwiz2.jpeg)
+# [![](./assets/crazyotto1.jpeg)](./assets/crazyotto1.jpeg) 
+# [![](./assets/crazyotto2.jpeg)](./assets/crazyotto2.jpeg)
 
 
 ## PanoMan 
