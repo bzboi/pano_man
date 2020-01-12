@@ -1,5 +1,6 @@
 # [![](./assets/pano_man.png)](./assets/pano_man_large.png) 
-
+# [![](./assets/crushroller1.jpeg)](./assets/crushroller1.jpeg) 
+# [![](./assets/crushroller2.jpeg)](./assets/crushroller2.jpeg) 
 ## PanoMan 
 This project simulates the classic Pacman arcade game on a first generation PanoLogic thin client.  
 
