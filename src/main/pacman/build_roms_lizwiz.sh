@@ -72,5 +72,18 @@ if [ $? -eq 0 ]; then
    exit
 fi
 
+(cd ${rom_path_src};md5sum -c ${rom_md5_path}/mspacmab.md5) 2>/dev/null 1> /dev/null
+if [ $? -eq 0 ]; then
+   romset="mspacmab"
+   main="boot1 boot2 boot3 boot4"
+   rom1="boot5 boot6"
+   gfx1="5e 5f"
+   prom1="82s126.1m"
+   prom4="82s126.4a"
+   prom7="82s123.7f"
+   build_them
+   exit
+fi
+
 echo "No supported arcade ROMS found"
 
