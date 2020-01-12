@@ -89,5 +89,17 @@ if [ $? -eq 0 ]; then
    exit
 fi
 
+(cd ${rom_path_src};md5sum -c ${rom_md5_path}/gorkans.md5) 2>/dev/null 1> /dev/null
+if [ $? -eq 0 ]; then
+   romset="gorkans"
+   main="gorkans8.rom gorkans4.rom gorkans7.rom gorkans3.rom gorkans6.rom gorkans2.rom gorkans5.rom gorkans1.rom"
+   gfx1="gorkgfx4.rom gorkgfx2.rom gorkgfx3.rom gorkgfx1.rom"
+   prom1="gorkprom.3"
+   prom4="gorkprom.1"
+   prom7="gorkprom.4"
+   build_them
+   exit
+fi
+
 echo "No supported Pacman arcade ROMS found"
 
