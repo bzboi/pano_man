@@ -3,6 +3,8 @@
 # [![](./assets/crushroller2.jpeg)](./assets/crushroller2.jpeg)
 # [![](./assets/gorkans1.jpeg)](./assets/gorkans1.jpeg) 
 # [![](./assets/gorkans2.jpeg)](./assets/gorkans2.jpeg)
+# [![](./assets/lizwiz1.jpeg)](./assets/lizwiz1.jpeg) 
+# [![](./assets/lizwiz2.jpeg)](./assets/lizwiz2.jpeg)
 
 
 ## PanoMan 
