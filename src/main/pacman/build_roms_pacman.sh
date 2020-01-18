@@ -101,5 +101,17 @@ if [ $? -eq 0 ]; then
    exit
 fi
 
+(cd ${rom_path_src};md5sum -c ${rom_md5_path}/eyeszacb.md5) 2>/dev/null 1> /dev/null
+if [ $? -eq 0 ]; then
+   romset="eyeszacb"
+   main="zacb_1.bin zacb_5.bin zacb_2.bin zacb_6.bin zacb_3.bin zacb_7.bin zacb_4.bin zacb_8.bin"
+   gfx1="x.bin c.bin b.bin p.bin"
+   prom1="82s126.1m"
+   prom4="82s129.4a"
+   prom7="82s123.7f"
+   build_them
+   exit
+fi
+
 echo "No supported Pacman arcade ROMS found"
 
