@@ -116,26 +116,6 @@ case class Pano() extends Component {
         audio.io.audio_sample := 0
     }
 
-    // pacman.io.I_JOYSTICK_A bits:
-    //      7 - credit
-    //      6 - coin2    
-    //      5 - coin1
-    //      4 - test_l dipswitch (rack advance)
-    //      3 - p1 down
-    //      2 - p1 right
-    //      1 - p1 left
-    //      0 - p1 up
-    //
-    // pacman.io.I_JOYSTICK_B bits:
-    //      7 - table 0:cocktail 1:upright
-    //      6 - start2
-    //      5 - start1
-    //      4 - test and fire    
-    //      3 - p2 down
-    //      2 - p2 right
-    //      1 - p2 left
-    //      0 - p2 up
-    //
     // pacman.io.I_SW bits:
     //      7 - character set ?
     //      6 - difficulty ?
@@ -175,28 +155,55 @@ case class Pano() extends Component {
     // PA1  1  - P1 left
     // PA0  0  - P1 right
 
+
+    // VGA_I2C pushbutton mapping **bzboi**
+    // REF  SCH    ARCADE    MCP23017
+    // SW1 (sw1_2) P2-START  gpio(13)
+    // SW2 (sw2_2) TBD       TBD
+    // SW4 (sw2)   COIN      gpio(6)
+    // SW3 (sw1)   P1-START  gpio(5)
+    //
+    // IN0 puckmanb
+    //      0 - p1 up         gpio(4)
+    //      1 - p1 left       gpio(1)
+    //      2 - p1 right      gpio(0)
+    //      3 - p1 down       gpio(2)
+    //      4 - port service  True
+    //      5 - coin1         gpio(6) 
+    //      6 - coin2         Pano button    
+    //      7 - service       True
+    // IN1 puckmanb
+    //      0 - p2 up         gpio(12)
+    //      1 - p2 left       gpio(9)
+    //      2 - p2 right      gpio(8)
+    //      3 - p2 down       gpio(10)
+    //      4 - P1-FIRE       gpio(3)    
+    //      5 - start1        gpio(5)
+    //      6 - start2        gpio(13)
+    //      7 - P2-FIRE       gpio(11)  
+
     when(gpio_out(16)) {
     // I2C port expander is present, use it
 
         pacman.io.I_JOYSTICK_A := 
-            (7 -> True,          // credit
-             6 -> True,          // coin2
-             5 -> ~io.pano_button,   // coin1
-             4 -> True,          // rack test
-             3 -> gpio_out(2),   // p1 down
-             2 -> gpio_out(0),   // p1 right
-             1 -> gpio_out(1),   // p1 left
-             0 -> gpio_out(4))   // p1 up
+            (7 -> True,            // service
+             6 -> ~io.pano_button, // coin2
+             5 -> gpio_out(6),     // coin1
+             4 -> True,            // port service (active low)
+             3 -> gpio_out(2),     // p1 down
+             2 -> gpio_out(0),     // p1 right
+             1 -> gpio_out(1),     // p1 left
+             0 -> gpio_out(4))     // p1 up
 
         pacman.io.I_JOYSTICK_B :=       
-            (7 -> gpio_out(13),  // upright/cocktail table select
-             6 -> gpio_out(11),  // start2
-             5 -> gpio_out(3),   // start1
-             4 -> True,          // test and fire
-             3 -> gpio_out(10),  // p2 down
-             2 -> gpio_out(8),   // p2 right
-             1 -> gpio_out(9),   // p2 left
-             0 -> gpio_out(12))  // p2 up
+            (7 -> True,            // upright/cocktail table select
+             6 -> gpio_out(13),    // P2-START
+             5 -> gpio_out(5),     // P1-START
+             4 -> True,            // port service (active low)
+             3 -> gpio_out(10),    // p2 down
+             2 -> gpio_out(8),     // p2 right
+             1 -> gpio_out(9),     // p2 left
+             0 -> gpio_out(12))    // p2 up
 
         pacman.io.I_SW :=         
             (7 -> True,             // character set?
